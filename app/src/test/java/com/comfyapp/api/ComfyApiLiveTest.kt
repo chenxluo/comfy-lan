@@ -21,7 +21,7 @@ class ComfyApiLiveTest {
     private val api = OkHttpComfyApi(OkHttpClient(), json)
 
     private fun liveOnly() {
-        if (System.getenv("COMFY_LIVE") != "1") return
+        org.junit.Assume.assumeTrue("needs COMFY_LIVE=1 and a local ComfyUI on 8188", System.getenv("COMFY_LIVE") == "1")
     }
 
     @Test
