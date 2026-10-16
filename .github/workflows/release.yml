@@ -1,0 +1,70 @@
+# Release APKs are attached to GitHub Releases on v* tags.
+#
+# Signing: if the four secrets KEYSTORE_BASE64 / KEYSTORE_PASSWORD / KEY_ALIAS /
+# KEY_PASSWORD are configured (KEYSTORE_BASE64 = base64 of the .keystore file),
+# they are decoded to a temp keystore and used. Without secrets, a throwaway
+# keytool key is generated so the APK still installs — configure the secrets
+# before publishing a real release.
+
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Configure release signing
+        env:
+          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+        run: |
+          chmod +x gradlew
+          if [ -n "$KEYSTORE_BASE64" ]; then
+            echo "$KEYSTORE_BASE64" | base64 -d > release.keystore
+            {
+              echo "RELEASE_STORE_FILE=$PWD/release.keystore"
+              echo "RELEASE_STORE_PASSWORD=$KEYSTORE_PASSWORD"
+              echo "RELEASE_KEY_ALIAS=$KEY_ALIAS"
+              echo "RELEASE_KEY_PASSWORD=$KEY_PASSWORD"
+            } >> "$GITHUB_ENV"
+          else
+            keytool -genkeypair -v -keystore release.keystore \
+              -storepass comfy-lan-demo -keypass comfy-lan-demo \
+              -alias comfylan -keyalg RSA -keysize 2048 -validity 10000 \
+              -dname "CN=Comfy LAN Demo, OU=Demo, O=Comfy LAN, C=US"
+            {
+              echo "RELEASE_STORE_FILE=$PWD/release.keystore"
+              echo "RELEASE_STORE_PASSWORD=comfy-lan-demo"
+              echo "RELEASE_KEY_ALIAS=comfylan"
+              echo "RELEASE_KEY_PASSWORD=comfy-lan-demo"
+            } >> "$GITHUB_ENV"
+          fi
+
+      - name: Build release APK
+        run: ./gradlew --no-daemon :app:assembleRelease
+
+      - name: Stage APK
+        run: cp app/build/outputs/apk/release/app-release.apk "ComfyLAN-${GITHUB_REF_NAME}.apk"
+
+      - name: Attach APK to release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ComfyLAN-*.apk

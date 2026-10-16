@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Screen: WorkflowDetail (使用 / 节点). Copy source: comfy-lan-screens.html #screen-detail -->
+<resources>
+    <string name="detail_title_fallback">工作流</string>
+    <string name="detail_back">返回</string>
+    <string name="detail_edit">编辑</string>
+    <string name="detail_more">更多</string>
+    <string name="detail_save_as_new">另存为新工作流</string>
+    <string name="detail_save_defaults">保存当前参数为默认</string>
+
+    <string name="detail_tab_usage">使用</string>
+    <string name="detail_tab_nodes">节点</string>
+
+    <!-- 使用 tab -->
+    <string name="detail_empty_title">暂无展示参数</string>
+    <string name="detail_empty_hint">请到“节点”页勾选</string>
+    <string name="detail_random">随机</string>
+    <string name="detail_randomize_once">随机一个</string>
+    <string name="detail_pick_image">选择图片</string>
+    <string name="detail_pick_from_server">从服务器输入目录选择</string>
+    <string name="detail_current_none">当前：未选择</string>
+    <string name="detail_current">当前：%1$s</string>
+    <string name="detail_combo_placeholder">请选择</string>
+
+    <!-- 结果区 -->
+    <string name="detail_results">结果</string>
+    <string name="detail_result_count">%1$d 张</string>
+    <string name="detail_result_placeholder">结果图</string>
+    <string name="detail_save">保存</string>
+    <string name="detail_saved">已保存</string>
+    <string name="detail_save_need_permission">需要存储权限才能保存</string>
+    <string name="detail_save_failed">保存失败：%1$s</string>
+    <string name="detail_mediastore_insert_failed">MediaStore 插入失败</string>
+
+    <!-- 运行条三态 -->
+    <string name="detail_run">运行</string>
+    <string name="detail_running">运行中</string>
+    <string name="detail_cancel">取消</string>
+    <string name="detail_done">已完成</string>
+    <string name="detail_progress">%1$d / %2$d%3$s</string>
+    <string name="detail_run_failed">运行失败</string>
+    <string name="detail_close">关闭</string>
+
+    <!-- 节点 tab -->
+    <string name="detail_nodes_disabled">已停用 %1$d 个节点</string>
+    <string name="detail_search_nodes">搜索节点</string>
+    <string name="detail_connected">已连接</string>
+    <string name="detail_no_widgets">（无可编辑参数）</string>
+    <string name="detail_session_runs">本次会话 · %1$d 次运行</string>
+    <string name="detail_all_results">全部</string>
+</resources>

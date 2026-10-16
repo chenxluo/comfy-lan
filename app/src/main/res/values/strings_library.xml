@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 工作流库 · Agent: connect (design spec #screen-library) -->
+<resources>
+    <string name="library_title">Comfy LAN</string>
+    <string name="library_not_connected">未连接</string>
+    <string name="library_canvas_cd">直接进入画布</string>
+    <string name="library_settings_cd">设置</string>
+    <string name="library_local">本机</string>
+    <string name="library_server">服务器</string>
+    <string name="library_server_loading">服务器 · …</string>
+    <string name="library_server_empty">服务器 workflows 目录为空</string>
+    <string name="library_delete_cd">删除</string>
+    <string name="library_import_server_cd">导入本机</string>
+    <string name="library_fab_cd">导入工作流</string>
+    <string name="library_imported">已导入</string>
+    <string name="library_open">打开</string>
+    <string name="library_deleted">已删除</string>
+    <string name="library_undo">撤销</string>
+    <string name="library_import_failed">导入失败：%1$s</string>
+    <string name="library_read_failed">读取失败：%1$s</string>
+    <string name="library_empty_title">还没有工作流</string>
+    <string name="library_empty_hint">点击右下角 + 导入 JSON 文件</string>
+    <string name="library_go_canvas">直接进入 ComfyUI 画布</string>
+    <string name="library_meta">%1$d 节点 · %2$d 参数 · %3$s</string>
+    <string name="library_server_meta">%1$s · %2$s</string>
+    <string name="library_rename_cd">重命名</string>
+    <string name="library_duplicate_cd">复制</string>
+    <string name="library_rename_title">重命名工作流</string>
+    <string name="library_rename_ok">确定</string>
+    <string name="library_rename_cancel">取消</string>
+
+</resources>

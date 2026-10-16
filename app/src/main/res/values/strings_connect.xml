@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 连接服务器 · Agent: connect (design spec #screen-connect) -->
+<resources>
+    <string name="connect_title">连接服务器</string>
+    <string name="connect_addr_label">服务器地址</string>
+    <string name="connect_placeholder">192.168.x.x:8188</string>
+    <string name="connect_button">连接</string>
+    <string name="connect_empty">请输入服务器地址</string>
+    <string name="connect_failed_generic">连接失败</string>
+    <string name="connect_failed">连接失败：%1$s</string>
+    <string name="connect_footer">局域网内的 ComfyUI 服务</string>
+</resources>

@@ -1,0 +1,10 @@
+*.iml
+.gradle/
+build/
+local.properties
+.idea/
+.cxx/
+
+# 真实测试夹具（私有资料），仅保留本地，不上传 GitHub
+app/src/test/resources/local_i2i.json
+app/src/test/resources/local_object_info.json
